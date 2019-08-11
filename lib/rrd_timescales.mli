@@ -16,12 +16,11 @@
  * are available, to avoid clients having to already know or guess.
  *)
 
-
 type t = {
 	name: string;
 	num_intervals: int;
 	interval_in_steps: int;
-}
+} [@@deriving yojson, sexp, compare]
 
 val make: name:string -> num_intervals:int -> interval_in_steps:int -> unit -> t
 

@@ -15,12 +15,14 @@
  * Timescales: this allows an RRD server to advertise which Timescales
  * are available, to avoid clients having to already know or guess.
  *)
+open! Sexplib.Std
+open! Ppx_compare_lib.Builtin
 
 type t = {
   name: string;
   num_intervals: int;
   interval_in_steps: int;
-} [@@deriving rpc]
+} [@@deriving rpc, yojson, sexp, compare]
 
 type ts = t list [@@deriving rpc]
 
